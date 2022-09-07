@@ -1,7 +1,24 @@
 # Interview Web Api
-## How to start
+## Instruction: How to start
+Type 3 simple commands into your terminal: 
 
-@TODO
+1. Grab the files!
+```bash
+git clone git@github.com:dqhl76/Interview-web-api.git
+```
+
+2. Install Dependencies
+```bash
+cd Interview-web-api
+npm install
+```
+
+3. Run!
+```bash
+npm run dev
+```
+
+Then you can access the app via http://localhost:8888
 
 ## 常见命令：
 
