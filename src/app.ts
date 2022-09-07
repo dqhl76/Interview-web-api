@@ -1,8 +1,8 @@
-import express, { Application, Request, Response, NextFunction } from "express";
-const app: Application = express();
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
+import express = require('express');
+const app: express.Application = express();
+app.get('/', function (req, res) {
+    res.send('Hello World!');
 });
-app.listen(8008, function () {
-  console.log("Example app listening on port 8008!");
-});
+app.listen(8888, function () {
+    console.log('Example app listening on port 8888!');
+})

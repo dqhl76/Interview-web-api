@@ -9,9 +9,10 @@
     "dev": "nodemon src/app.ts",
     "build": "tsc -p .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --ignore-pattern .gitignore"
+    "lint": "eslint src --ignore-pattern .gitignore",
+    "lint:fix": "eslint src --ignore-pattern .gitignore --fix"
   },
-  "pre-commit": "lint",
+  "pre-commit": "lint:fix",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dqhl76/Interview-web-api.git"
@@ -23,7 +24,14 @@
     "url": "https://github.com/dqhl76/Interview-web-api/issues"
   },
   "homepage": "https://github.com/dqhl76/Interview-web-api#readme",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@types/express": "^4.17.13",
     "@types/node": "^18.7.15",
     "@typescript-eslint/eslint-plugin": "^5.36.2",

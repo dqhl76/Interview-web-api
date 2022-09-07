@@ -6,7 +6,10 @@ module.exports = {
         es2021: true,
     },
     plugins: ['@typescript-eslint'],
-    extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+    extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:prettier/recommended',
+    ],
     overrides: [],
     parserOptions: {
         ecmaVersion: 2019,
@@ -16,4 +19,4 @@ module.exports = {
         },
     },
     rules: {},
-}
+};
