@@ -22,7 +22,27 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
+const RoomSchema = new mongoose.Schema({
+    start: {
+        type: String,
+    },
+    duration: {
+        type: Number,
+    },
+    created_id: {
+        type: String,
+    },
+    interviewed_id: {
+        type: String,
+    },
+    room_id: {
+        type: String,
+    },
+});
+
+const Room = mongoose.model('Room', RoomSchema);
+
 const User = mongoose.model('User', UserSchema);
 
 // export User
-export { User };
+export { User, Room };
