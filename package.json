@@ -61,6 +61,7 @@
     "dotenv": "^16.0.3",
     "email-validator": "^2.0.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.7.5"
+    "mongoose": "^6.7.5",
+    "socket.io": "^4.5.4"
   }
 }

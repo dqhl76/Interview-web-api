@@ -4,6 +4,9 @@ import dotenv = require('dotenv');
 import validator from 'email-validator';
 import bcrypt from 'bcryptjs';
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import { Server } from 'socket.io';
+import http from 'http';
+import url from 'url';
 
 dotenv.config();
 
@@ -142,6 +145,24 @@ app.get('/get_rooms', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+
+const server = http.createServer(app);
+server.listen(PORT, () => {
     console.log(`running on http://localhost:${PORT}`);
+});
+
+const io = new Server(server, {
+    cors: {
+        origin: '*',
+    },
+});
+
+io.on('connection', (socket) => {
+    const room_id = url.parse(socket.request.url as string, true).query.room_id;
+    socket.join(room_id as string);
+    console.log(room_id);
+    socket.on('message', function (data) {
+        console.log(data);
+        socket.broadcast.to(room_id as string).emit('message', data as string);
+    });
 });
