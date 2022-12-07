@@ -6,7 +6,6 @@ import bcrypt from 'bcryptjs';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { Server } from 'socket.io';
 import http from 'http';
-import url from 'url';
 
 dotenv.config();
 
@@ -158,11 +157,13 @@ const io = new Server(server, {
 });
 
 io.on('connection', (socket) => {
-    const room_id = url.parse(socket.request.url as string, true).query.room_id;
-    socket.join(room_id as string);
-    console.log(room_id);
+    let room_id = 'default';
+    socket.on('join', function (data) {
+        socket.join(data as string);
+        room_id = data;
+        console.log('room_id: ' + data);
+    });
     socket.on('message', function (data) {
-        console.log(data);
         socket.broadcast.to(room_id as string).emit('message', data as string);
     });
 });
