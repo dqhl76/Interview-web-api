@@ -107,7 +107,7 @@ app.get('/get_rooms', async (req, res) => {
         return res.json({ success: false, data: 'Wrong Token' });
     }
     let rooms = await Room.find({ created_id: user._id });
-    if (rooms == null) {
+    if (rooms.length == 0) {
         rooms = await Room.find({ interviewed_id: user._id });
     }
     interface IResult {
@@ -120,7 +120,7 @@ app.get('/get_rooms', async (req, res) => {
         interviewed_email?: string;
     }
     const results: IResult[] = [];
-    if (rooms.length == 0) {
+    if (rooms != null) {
         // iterate through rooms and get the user
         for (let i = 0; i < rooms.length; i++) {
             const created_user = await User.findById(rooms[i].created_id);
