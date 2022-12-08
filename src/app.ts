@@ -120,7 +120,7 @@ app.get('/get_rooms', async (req, res) => {
         interviewed_email?: string;
     }
     const results: IResult[] = [];
-    if (rooms != null) {
+    if (rooms.length == 0) {
         // iterate through rooms and get the user
         for (let i = 0; i < rooms.length; i++) {
             const created_user = await User.findById(rooms[i].created_id);
